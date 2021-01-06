@@ -132,9 +132,10 @@ function Dash(props: any) {
 
   let startActive = (name: string) => setActive(s => new Set([name, ...Array.from(s)]));
   let endActive = (name: string) => setActive(s => { let s2 = new Set(s); s2.delete(name); return s2; });
+  let tracking = active.size > 0;
 
   return (
-    <div className="dash">
+    <div className={"dash" + (tracking ? " tracking" : "")}>
       <div className="wallet">{Math.round((wallet + Number.EPSILON) * 1000) / 1000}<span className="g" /></div>
       <div className="actions">
         {

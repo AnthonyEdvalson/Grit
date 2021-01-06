@@ -117,7 +117,7 @@ export class Action {
       let currentAmount = schedule.eval(streak);
       let nextAmount = schedule.eval(streak + 1);
       let timeToReward = schedule.delay - currentDuration;
-      let hit = timeToReward == 0;
+      let hit = timeToReward === 0;
 
       details.push({
         streak,
@@ -134,16 +134,16 @@ export class Action {
 }
 
 let actionList = [
-  new Action("Obsidian", new Rate(5, 2, 9), [new Schedule(100, 50, 350), new Schedule(100, 50, 250, 60)]),
-  new Action("Exercise", new Rate(7, 0, 7), [new Schedule(100, 50, 250), new Schedule(50, 0, 50, 30)]),
-  //new Action("Grit", new Rate(3, 0, 3), []),
-  new Action("YouTube", new Rate(-6, -2, -8), [new Schedule(-50, -50, -300), new Schedule(-100, -150, -400, 120)]),
-  //new Action("Twitch", new Rate(-4, -1, -8), []),
-  new Action("Games", new Rate(-4, -2, -10), []),
-  new Action("Writing", new Rate(2, 0, 2), []),
-  new Action("Cleaning & Maintenance", new Rate(4, 0, 4), [new Schedule(200, -50, 100)]),
-  new Action("Applications", new Rate(6, 1, 7), [new Schedule(200, 0, 200)]),
-  new Action("VR", new Rate(-2, 0, -2), [])
+  new Action("YouTube", new Rate(-5, -2, -11), [new Schedule(-50, -50, -300, 0), new Schedule(-300, -200, -500, 180)]),
+  new Action("Games", new Rate(-5, -2, -11), [new Schedule(-50, -50, -300, 0), new Schedule(-300, -200, -500, 180)]),
+
+  new Action("PUP", new Rate(2, 1, 6), [new Schedule(200, 0, 200, 300)]),
+
+  new Action("Obsidian", new Rate(2, 1, 5), [new Schedule(150, 50, 300), new Schedule(300, 100, 400, 120)]),
+  
+  new Action("Exercise", new Rate(4, 0, 4), [new Schedule(50, 50, 150, 30)]),
+  new Action("Cleaning", new Rate(2, 0, 2), [new Schedule(200, -150, 0, 15)]),
+  new Action("Applications", new Rate(2, 0, 2), [new Schedule(150, 0, 150)])
 ];
 
 let actionMap = new Map<string, Action>();
